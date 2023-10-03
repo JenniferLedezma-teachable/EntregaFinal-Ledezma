@@ -4,7 +4,7 @@ import { BsCart2 } from "react-icons/bs";
 const CartWidget = () => {
     return (
         <>
-           <BsCart2 /> <Badge bg="secondary">3 </Badge>          
+            <Badge bg="secondary" > <BsCart2 /> 3 </Badge>          
         </>
     )
 }
