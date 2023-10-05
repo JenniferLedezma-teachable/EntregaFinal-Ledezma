@@ -7,7 +7,7 @@ const ItemListContainer = ({ greeting }) => {
         <>
             <Container>
                 <Row>
-                    <Col><h3 className="greeting">{greeting}</h3>       </Col>
+                    <Col><h3 className="greeting">{greeting}</h3> </Col>
                 </Row>
             </Container>
         </>
