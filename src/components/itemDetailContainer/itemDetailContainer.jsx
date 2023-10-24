@@ -29,7 +29,6 @@ const ItemDetailsContainer = () => {
                     </Col>
                     <Col></Col>
                     <Col></Col>
-
                 </Row>
             </Container>
         </>

@@ -6,7 +6,6 @@ import { useState, useEffect } from 'react'
 import Item from '../item/item'
 import Spinner from 'react-bootstrap/Spinner';
 
-
 const ItemListContainer = ({ greeting }) => {
     const [products, setProducts] = useState([])
     const url = 'https://fakestoreapi.com/products'
@@ -22,20 +21,22 @@ const ItemListContainer = ({ greeting }) => {
     }, [])
 
     return (
-        <>
-            <Container>
-                <Row>
-                    <Col>
-                        <h3 className="greeting">{greeting}</h3>
-                        {products.length > 0 ? (
-                            products.map((prod) => (
-                                <Item key={prod.id} product={prod} />
-                            ))
-                        ) : (<Spinner animation="border" />)}
-                    </Col>
-                </Row>
-            </Container>
-        </>
+        <Container>
+            <Row>
+                <h3 className="greeting">{greeting}</h3>
+            </Row>
+            <Row>
+                {products.length > 0 ? (
+                    products.map((prod) => (
+                        <Col key={prod.id} md={4}>
+                            <Item product={prod} />
+                        </Col>
+                    ))
+                ) : (
+                    <Spinner animation="border" />
+                )}
+            </Row>
+        </Container>
     )
 }
 
