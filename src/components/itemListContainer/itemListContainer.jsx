@@ -1,4 +1,3 @@
-import Count from '../count/count'
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -32,15 +31,9 @@ const ItemListContainer = ({ greeting }) => {
                             products.map((prod) => (
                                 <Item key={prod.id} product={prod} />
                             ))
-
-                        ) : (
-                            <Spinner animation="border" />
-                        )}
-
+                        ) : (<Spinner animation="border" />)}
                     </Col>
-
                 </Row>
-                <Count></Count>
             </Container>
         </>
     )

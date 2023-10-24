@@ -1,26 +1,24 @@
 import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 import { Link } from "react-router-dom";
+import Card from 'react-bootstrap/Card';
 
-const Item = ({product}) => {
-    return(
+const Item = ({ product }) => {
+    return (
         <>
-        <Container>
-            <Row>
-                <Col>
-                <h4>{product.title}</h4>
-                <p>Price: USD ${product.price}</p>
-                <p>Category: {product.category}</p>
-                <Link to={`/item/${product.id}`}>See More</Link>
-                </Col>
-                <Col></Col>
-                <Col></Col>
-                
-            </Row>
-        </Container>
-        <Link /> 
-    </>
+            <Container>
+                <Card style={{ width: '18rem' }}>
+                    {/* <Card.Img variant="top" src="holder.js/100px180" /> */}
+                    <Card.Body>
+                        <Card.Title>{product.title}</Card.Title>
+                        <Card.Text>
+                            Price: USD ${product.price}
+                        </Card.Text>
+                        <Link to={`/item/${product.id}`}>See More</Link>
+                    </Card.Body>
+                </Card>
+            </Container>
+            <Link />
+        </>
     )
 }
 
