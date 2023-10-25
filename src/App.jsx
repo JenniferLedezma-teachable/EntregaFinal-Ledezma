@@ -1,7 +1,7 @@
 import NavBar from './components/navBar/navBar'
 import ItemListContainer from './components/itemListContainer/itemListContainer'
 import ItemDetailContainer from './components/itemDetailContainer/itemDetailContainer'
-import Count from './components/count/count'
+import Home from './components/home/home'
 import NotFound from './components/notFound/notFound'
 
 import { Routes, Route, BrowserRouter } from 'react-router-dom'
@@ -13,7 +13,7 @@ function App() {
       <NavBar />
       <Routes>
         <Route exact path='/*' element={<NotFound />} />
-        <Route exact path='/' element={<Count />} />
+        <Route exact path='/' element={<Home />} />
         <Route exact path='products' element={<ItemListContainer />} />
         <Route exact path='/category/:categoryName' element={<ItemListContainer />} />
         <Route path='/item/:id' element={<ItemDetailContainer />} />
