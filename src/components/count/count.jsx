@@ -17,7 +17,7 @@ const Count = () => {
         <Container>
             <Row>
                 <Col xs="auto">
-                    <Button variant="light" onClick={() => setCount(count > 1 ? count - 1 : count)}>-</Button>
+                    <Button variant="light" onClick={() => setCount(count > 0 ? count - 1 : count)}>-</Button>
                 </Col>
                 <Col xs="auto">
                     <p>{count}</p>
