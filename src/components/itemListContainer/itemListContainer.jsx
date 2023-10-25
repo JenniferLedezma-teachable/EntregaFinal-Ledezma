@@ -9,18 +9,37 @@ import Item from '../item/item'
 const ItemListContainer = ({ greeting }) => {
     const [products, setProducts] = useState([])
     const [title, setTitle] = useState('All products')
-    const {categoryName} = useParams()
+    const { categoryName } = useParams()
+    const [loading, setLoading] = useState(true) // Add loading state
     const url = categoryName ? `https://fakestoreapi.com/products/category/${categoryName}` : 'https://fakestoreapi.com/products/'
 
     useEffect(() => {
-        fetch(url)
-            .then(res => res.json())
-            .then(json => {
+        const fetchData = async () => {
+            try {
+                const response = await fetch(url)
+
+                if (!response.ok) {
+                    throw new Error('Network response was not ok')
+                }
+
+                const json = await response.json()
                 setProducts(json)
                 categoryName ? setTitle(categoryName) : setTitle('All products')
-                console.log(json)
-            })
-            .catch(error => console.error(error))
+            } catch (error) {
+                console.error(error)
+            } finally {
+                setLoading(false)
+            }
+        }
+
+        const timeoutId = setTimeout(() => {
+            console.error('Request timed out')
+            setLoading(false)
+        }, 10000)
+
+        fetchData()
+
+        return () => clearTimeout(timeoutId)
     }, [categoryName])
 
     return (
@@ -30,14 +49,14 @@ const ItemListContainer = ({ greeting }) => {
                 <h2 style={{ textTransform: 'capitalize' }}>{title}</h2>
             </Row>
             <Row>
-                {products.length > 0 ? (
+                {loading ? (
+                    <Spinner animation="border" />
+                ) : (
                     products.map((prod) => (
                         <Col key={prod.id} md={4}>
                             <Item product={prod} />
                         </Col>
                     ))
-                ) : (
-                    <Spinner animation="border" />
                 )}
             </Row>
         </Container>
