@@ -1,5 +1,5 @@
-import Badge from 'react-bootstrap/Badge';
-import { BsCart2 } from "react-icons/bs";
+import Badge from 'react-bootstrap/Badge'
+import { BsCart2 } from "react-icons/bs"
 
 const CartWidget = () => {
     return (

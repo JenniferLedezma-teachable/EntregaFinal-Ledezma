@@ -1,7 +1,7 @@
-import React from 'react';
+import React from 'react'
 import CartWidget from '../cartWidget/cartWidget'
-import { Navbar, Container, Nav, NavDropdown } from 'react-bootstrap';
-import { Link, NavLink } from "react-router-dom";
+import { Navbar, Container, Nav, NavDropdown } from 'react-bootstrap'
+import { Link, NavLink } from "react-router-dom"
 
 const NavBar = () => {
   return (
@@ -13,11 +13,8 @@ const NavBar = () => {
           <Nav className="me-auto">
             <Nav.Link><NavLink to="products">All Products</NavLink></Nav.Link>
             <NavDropdown title="Categories" id="collapsible-nav-dropdown">
-              <NavDropdown.Item href="#electronics">Electronics</NavDropdown.Item>
-              <NavDropdown.Item href="#jewelries">Jewelery</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#men">Men's clothing</NavDropdown.Item>
-              <NavDropdown.Item href="#women">Women's clothing</NavDropdown.Item>
+              <NavDropdown.Item><NavLink to="category/electronics">Electronics</NavLink></NavDropdown.Item>
+              <NavDropdown.Item><NavLink to="category/jewelery">Jewelery</NavLink></NavDropdown.Item>
             </NavDropdown>
           </Nav>
           <Nav>

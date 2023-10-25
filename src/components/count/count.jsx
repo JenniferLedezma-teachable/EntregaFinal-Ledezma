@@ -1,6 +1,6 @@
-import { useState, useEffect, useRef } from "react";
-import Button from 'react-bootstrap/Button';
-import Container from 'react-bootstrap/Container';
+import { useState, useEffect, useRef } from "react"
+import Button from 'react-bootstrap/Button'
+import Container from 'react-bootstrap/Container'
 
 const Count = () => {
     const [count, setCount] = useState(1)

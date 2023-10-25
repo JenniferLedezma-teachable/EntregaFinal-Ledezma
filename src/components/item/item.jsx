@@ -1,6 +1,6 @@
-import Container from 'react-bootstrap/Container';
-import { Link } from "react-router-dom";
-import Card from 'react-bootstrap/Card';
+import Container from 'react-bootstrap/Container'
+import { Link } from "react-router-dom"
+import Card from 'react-bootstrap/Card'
 
 const Item = ({ product }) => {
     return (
