@@ -1,6 +1,8 @@
 import { useState, useEffect, useRef } from "react"
 import Button from 'react-bootstrap/Button'
 import Container from 'react-bootstrap/Container'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
 
 const Count = () => {
     const [count, setCount] = useState(1)
@@ -13,9 +15,17 @@ const Count = () => {
 
     return (
         <Container>
-            <Button variant="light" onClick={() => setCount(count > 1 && count - 1)}>-</Button>
-            <p> {count}</p>
-            <Button variant="light" onClick={() => setCount(count + 1)}>+</Button>{' '}
+            <Row>
+                <Col xs="auto">
+                    <Button variant="light" onClick={() => setCount(count > 1 ? count - 1 : count)}>-</Button>
+                </Col>
+                <Col xs="auto">
+                    <p>{count}</p>
+                </Col>
+                <Col xs="auto">
+                    <Button variant="light" onClick={() => setCount(count + 1)}>+</Button>
+                </Col>
+            </Row>
         </Container>
     )
 }
