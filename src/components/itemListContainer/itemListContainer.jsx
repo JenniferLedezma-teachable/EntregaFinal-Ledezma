@@ -17,23 +17,11 @@ const ItemListContainer = ({ greeting }) => {
     
 
     useEffect(() => {
-        // const fetchData = async () => {
-        //     try {
-        //         const response = await fetch(url)
-
-        //         if (!response.ok) {
-        //             throw new Error('Network response was not ok')
-        //         }
-
-        //         const json = await response.json()
-        //         setProducts(json)
-        //         categoryName ? setTitle(categoryName) : setTitle('All products')
-        //     } catch (error) {
-        //         console.error(error)
-        //     } finally {
-        //         setLoading(false)
-        //     }
-        // }
+        // const productsFilterRef = query(
+        //     collection(db, 'products'),
+        //     where('categoryId', '==', 'Sunscreen'),
+        //     limit(10)
+        // )
 
         const productsRef = collection(db, "products")
 
@@ -43,7 +31,7 @@ const ItemListContainer = ({ greeting }) => {
             setTitle('All products')
         })
         .catch(e => console.error(e))
-        .finally(setLoading(false))
+        .finally(() => setLoading(false))
 
         const timeoutId = setTimeout(() => {
             console.error('Request timed out')
