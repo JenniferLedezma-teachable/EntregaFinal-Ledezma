@@ -1,4 +1,4 @@
-import NavBar from './components/navBar/navBar'
+import NavBar from './components/navbar/Navbar';
 import ItemListContainer from './components/itemListContainer/itemListContainer'
 import ItemDetailContainer from './components/itemDetailContainer/itemDetailContainer'
 import Home from './components/home/home'

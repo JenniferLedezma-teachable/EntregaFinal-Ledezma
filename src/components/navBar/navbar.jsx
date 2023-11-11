@@ -12,8 +12,10 @@ const NavBar = () => {
           <Nav className="me-auto">
             <Nav.Link><NavLink to="products">All Products</NavLink></Nav.Link>
             <NavDropdown title="Categories" id="collapsible-nav-dropdown">
-              <NavDropdown.Item><NavLink to="category/electronics">Electronics</NavLink></NavDropdown.Item>
-              <NavDropdown.Item><NavLink to="category/jewelery">Jewelery</NavLink></NavDropdown.Item>
+              <NavDropdown.Item><NavLink to="category/serum">Serums</NavLink></NavDropdown.Item>
+              <NavDropdown.Item><NavLink to="category/sunscreen">Sunscreens</NavLink></NavDropdown.Item>
+              <NavDropdown.Item><NavLink to="category/hair">Hair</NavLink></NavDropdown.Item>
+              <NavDropdown.Item><NavLink to="category/makeup">Makeup</NavLink></NavDropdown.Item>
             </NavDropdown>
           </Nav>
           <Nav>

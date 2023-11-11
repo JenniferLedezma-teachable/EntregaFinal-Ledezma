@@ -1,7 +1,22 @@
-# React + Vite Ecommerce
-This first PreEntrega is for my first steps for my Ecommerce, it will be related to Skincare Products and it is named SKin Glow CR
+# SKin Glow CR
+This Ecommerce, is based on Skincare Products and it is named SKin Glow CR.
 
-Currently, two official plugins are available:
+## Technologies Used
+React JS and Vite powered
+Firebase to store all the products and imagenes of everyone
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Setup
+
+- Clone the project 
+- Go to project you already cloned and run `npm run dev ` in the root of the project
+
+## Structure
+
+The project has different components:
+
+- ItemListContainer: where you can see the logic to get all the products
+- Item: where you can see every product listed from the ItemListContainer list
+- IteamDetailContainer: where you can see the detail of a specific product selected from the product list (from item)
+- Cart
+
+

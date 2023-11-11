@@ -1,6 +1,6 @@
-import { Link } from 'react-router-dom';
-import Container from 'react-bootstrap/Container';
-import Card from 'react-bootstrap/Card';
+import { Link } from 'react-router-dom'
+import Container from 'react-bootstrap/Container'
+import Card from 'react-bootstrap/Card'
 
 const Item = ({ product }) => {
     return (
@@ -18,7 +18,7 @@ const Item = ({ product }) => {
                 </Card.Body>
             </Card>
         </Container>
-    );
-};
+    )
+}
 
-export default Item;
+export default Item
