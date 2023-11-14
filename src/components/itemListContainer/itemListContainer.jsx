@@ -8,9 +8,9 @@ import Item from '../item/item'
 import { db } from '../../firebase/client'
 import { collection, getDocs, where, query } from 'firebase/firestore'
 
-const ItemListContainer = ({ greeting }) => {
+const ItemListContainer = () => {
   const [products, setProducts] = useState([])
-  const [title, setTitle] = useState('All products')
+  const [title, setTitle] = useState()
   const category = useParams().categoryId
   const [loading, setLoading] = useState(true)
 
@@ -29,7 +29,7 @@ const ItemListContainer = ({ greeting }) => {
         setProducts(
           snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }))
         )
-        setTitle('All products')
+        setTitle(category || 'All products')
       })
       .catch((e) => console.error(e))
       .finally(() => setLoading(false))
@@ -45,7 +45,6 @@ const ItemListContainer = ({ greeting }) => {
   return (
     <Container>
       <Row>
-        <h3 className='greeting'>{greeting}</h3>
         <h2 style={{ textTransform: 'capitalize' }}>{title}</h2>
       </Row>
       <Row>
