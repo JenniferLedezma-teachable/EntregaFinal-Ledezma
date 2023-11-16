@@ -17,6 +17,6 @@ The project has different components:
 - ItemListContainer: where you can see the logic to get all the products
 - Item: where you can see every product listed from the ItemListContainer list
 - IteamDetailContainer: where you can see the detail of a specific product selected from the product list (from item)
-- Cart
+- Cart and orders
 
 
