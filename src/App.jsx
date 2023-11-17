@@ -6,19 +6,23 @@ import NotFound from './components/notFound/notFound'
 
 import { Routes, Route, BrowserRouter } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css'
+import ShopComponentContext from './context/shopContext'
 
 function App() {
   return (
-    <BrowserRouter>
-      <NavBar />
-      <Routes>
-        <Route exact path='/*' element={<NotFound />} />
-        <Route exact path='/' element={<Home />} />
-        <Route exact path='products' element={<ItemListContainer />} />
-        <Route exact path='/category/:categoryId' element={<ItemListContainer />} />
-        <Route path='/item/:id' element={<ItemDetailContainer />} />
-      </Routes>
-    </BrowserRouter>
+    <ShopComponentContext>
+          <BrowserRouter>
+            <NavBar />
+            <Routes>
+              <Route exact path='/*' element={<NotFound />} />
+              <Route exact path='/' element={<Home />} />
+              <Route exact path='products' element={<ItemListContainer />} />
+              <Route exact path='/category/:categoryId' element={<ItemListContainer />} />
+              <Route path='/item/:id' element={<ItemDetailContainer />} />
+            </Routes>
+          </BrowserRouter>
+    </ShopComponentContext>
+
   )
 }
 

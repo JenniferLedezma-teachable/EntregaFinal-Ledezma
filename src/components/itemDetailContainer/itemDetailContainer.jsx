@@ -3,7 +3,7 @@ import  { useState, useEffect } from 'react'
 import Container from 'react-bootstrap/Container'
 import Card from 'react-bootstrap/Card'
 import ListGroup from 'react-bootstrap/ListGroup'
-import Count from '../count/count'
+import ItemCount from '../itemCount/itemCount'
 import { useParams } from 'react-router-dom'
 import { db } from '../../firebase/client'
 import { doc, getDoc } from 'firebase/firestore'
@@ -43,9 +43,10 @@ const ItemDetailsContainer = () => {
                     <ListGroup className='list-group-flush'>
                         <ListGroup.Item>Price: USD ${product.price}</ListGroup.Item>
                         <ListGroup.Item>Category: {product.categoryId}</ListGroup.Item>
+                        <ListGroup.Item>Stock: {product.stock}</ListGroup.Item>
                     </ListGroup>
                     <Card.Body>
-                        <Card.Link><Count /></Card.Link>
+                        <Card.Link><ItemCount productStock={product.stock} addToCart={product}/></Card.Link>
                     </Card.Body>
                 </Card>
             )}
