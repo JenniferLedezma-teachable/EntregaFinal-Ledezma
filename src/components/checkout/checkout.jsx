@@ -24,8 +24,8 @@ const Checkout = () => {
       totalAmount: finalPrice(),
     }
 
-    const pedidosRef = collection(db, 'orders')
-    addDoc(pedidosRef, order).then((doc) => {
+    const ordersRef = collection(db, 'orders')
+    addDoc(ordersRef, order).then((doc) => {
       setOrderId(doc.id)
       emptyCart()
     })
