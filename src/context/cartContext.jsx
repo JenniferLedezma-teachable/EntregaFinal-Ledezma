@@ -50,18 +50,26 @@ const CartComponentContext = ({ children }) => {
       const itemExists = cart.find((item) => item.product.id === productId)
 
       if (itemExists) {
-        const updateCart = cart.map((item) =>
-          item.product.id === productId
-            ? { ...item, quantity: item.quantity + quantity }
-            : item
-        )
-        setCart(updateCart)
+        const totalQuantity = itemExists.quantity + quantity
+
+        if (totalQuantity > product.stock) {
+          console.log('Product unavaible out stock')
+          return false
+        } else {
+          const updateCart = cart.map((item) =>
+            item.product.id === productId
+              ? { ...item, quantity: item.quantity + quantity }
+              : item
+          )
+          setCart(updateCart)
+        }
       } else {
         setCart((oldCart) => [...oldCart, { product, quantity }])
       }
     } catch (error) {
       console.error('Error adding products to cart', error)
     }
+    return true
   }
 
   const finalPrice = () => {
@@ -81,7 +89,7 @@ const CartComponentContext = ({ children }) => {
         emptyCart,
         cartLength,
         addProduct,
-        finalPrice
+        finalPrice,
       }}
     >
       {children}

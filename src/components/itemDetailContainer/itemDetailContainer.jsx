@@ -17,6 +17,7 @@ const ItemDetailContainer = () => {
     const [product, setProduct] = useState(null)
     const [showSuccessModal, setShowSuccessModal] = useState(false)
     const [productNotFound, setProductNotFound] = useState(false)
+    const [errorMessage, setErrorMessage] = useState('')
 
     useEffect(() => {
         const fetchProduct = async () => {
@@ -49,11 +50,18 @@ const ItemDetailContainer = () => {
             quantity,
         }
 
-        addProduct(productCart)
-        setShowSuccessModal(true)
-        setTimeout(() => {
-            setShowSuccessModal(false)
-        }, 3000)
+        const addedToCart = addProduct(productCart);
+
+        if (addedToCart) {
+            setShowSuccessModal(true);
+            setTimeout(() => {
+                setShowSuccessModal(false);
+            }, 3000);
+        } else {
+            setErrorMessage('Product out of stock or invalid quantity');
+            setShowSuccessModal(false)   
+        }
+       
     }
 
     const handleCloseModal = () => {
@@ -63,10 +71,10 @@ const ItemDetailContainer = () => {
     return (
         <Container className='d-flex flex-column align-items-center' style={{ marginBottom: '10rem' }}>
             { productNotFound ? (
-                
                 <h2>Product Not Found</h2>
             ) : product && (
                 <Card style={{ width: '30rem', marginTop: '2rem', marginBottom: '10rem' }}>
+                    {errorMessage && <Card.Title className='d-flex flex-column align-items-center' style={{ color: 'red'}}>{errorMessage}</Card.Title>}
                     <Card.Img variant='top' src={product.image} alt={product.title} />
                     <Card.Body>
                         <Card.Title>{product.title}</Card.Title>
