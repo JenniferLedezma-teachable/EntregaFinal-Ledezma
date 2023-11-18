@@ -6,7 +6,7 @@ import ListGroup from 'react-bootstrap/ListGroup'
 import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button'
 import ItemCount from '../itemCount/itemCount'
-import { useParams } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
 import { CartContext } from '../../context/cartContext'
 import { db } from '../../firebase/client'
 import { doc, getDoc } from 'firebase/firestore'
@@ -99,9 +99,11 @@ const SuccessModal = ({ show, handleClose }) => {
                 <p>Added to cart successfully!</p>
             </Modal.Body>
             <Modal.Footer>
-                <Button variant='secondary' onClick={handleClose}>
-                    Close
-                </Button>
+                <Link to="/cart">
+                    <Button variant='secondary' onClick={handleClose} style={{ backgroundColor: '#E7C5CA', borderColor: '#D4A3A7' }}>
+                        See my Cart
+                    </Button>
+                </Link>
             </Modal.Footer>
         </Modal>
     )
