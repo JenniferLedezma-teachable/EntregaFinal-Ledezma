@@ -17,6 +17,7 @@ const ItemDetailContainer = () => {
     const { id } = useParams()
     const [product, setProduct] = useState(null)
     const [showSuccessModal, setShowSuccessModal] = useState(false)
+    const [productNotFound, setProductNotFound] = useState(false)
 
     useEffect(() => {
         const fetchProduct = async () => {
@@ -27,6 +28,7 @@ const ItemDetailContainer = () => {
                 if (snapshot.exists()) {
                     setProduct({ ...snapshot.data(), id: snapshot.id })
                 } else {
+                    setProductNotFound(true)
                     console.log('No such document!')
                 }
             } catch (error) {
@@ -61,7 +63,10 @@ const ItemDetailContainer = () => {
 
     return (
         <Container className='d-flex flex-column align-items-center' style={{ marginBottom: '10rem' }}>
-            {product && (
+            { productNotFound ? (
+                
+                <h2>Product Not Found</h2>
+            ) : product && (
                 <Card style={{ width: '30rem', marginTop: '2rem', marginBottom: '10rem' }}>
                     <Card.Img variant='top' src={product.image} alt={product.title} />
                     <Card.Body>
