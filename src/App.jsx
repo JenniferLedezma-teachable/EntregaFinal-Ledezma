@@ -6,11 +6,11 @@ import NotFound from './components/notFound/notFound'
 
 import { Routes, Route, BrowserRouter } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import ShopComponentContext from './context/shopContext'
+import CartComponentContext from './context/cartContext'
 
 function App() {
   return (
-    <ShopComponentContext>
+    <CartComponentContext>
           <BrowserRouter>
             <NavBar />
             <Routes>
@@ -21,8 +21,7 @@ function App() {
               <Route path='/item/:id' element={<ItemDetailContainer />} />
             </Routes>
           </BrowserRouter>
-    </ShopComponentContext>
-
+    </CartComponentContext>
   )
 }
 

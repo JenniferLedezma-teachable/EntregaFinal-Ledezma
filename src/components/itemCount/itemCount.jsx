@@ -12,10 +12,17 @@ const ItemCount = ( {productStock, addToCart} ) => {
         count > 1 && setCount(count - 1)
     }
 
-    const addProduct = () => {
+    const sumProduct = () => {
         count < productStock && setCount(count + 1)
     }
 
+
+    const addProductToCart = () => {
+        if (count > 0 && count <= productStock) {
+            addToCart(count)
+          }
+    }
+    
     useEffect(() => {
         console.log(`El componente se renderizo ${refRender.current}`)
         refRender.current = refRender.current + 1
@@ -31,7 +38,7 @@ const ItemCount = ( {productStock, addToCart} ) => {
                 <p>{count}</p>
                 </Col>
                 <Col xs='auto'>
-                    <Button variant='light' onClick={addProduct}>+</Button>
+                    <Button variant='light' onClick={sumProduct}>+</Button>
                 </Col>
             </Row>
             <Row className='d-flex flex-column align-items-center'> 
@@ -42,9 +49,9 @@ const ItemCount = ( {productStock, addToCart} ) => {
                         borderColor: '#D4A3A7',
                         marginTop: '4%',
                       }}
-                    onClick={addToCart}
+                    onClick={addProductToCart}
                 >
-                    Agregar al carrito
+                    Add to cart
                 </Button>
             </Row>
         </Container>

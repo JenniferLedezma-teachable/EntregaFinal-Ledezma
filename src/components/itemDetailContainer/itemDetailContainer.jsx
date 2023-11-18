@@ -1,16 +1,22 @@
 // ItemDetailsContainer.jsx
-import  { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import Container from 'react-bootstrap/Container'
 import Card from 'react-bootstrap/Card'
 import ListGroup from 'react-bootstrap/ListGroup'
+import Modal from 'react-bootstrap/Modal'
+import Button from 'react-bootstrap/Button'
 import ItemCount from '../itemCount/itemCount'
 import { useParams } from 'react-router-dom'
+import { useContext } from 'react'
+import { CartContext } from '../../context/cartContext'
 import { db } from '../../firebase/client'
 import { doc, getDoc } from 'firebase/firestore'
 
-const ItemDetailsContainer = () => {
+const ItemDetailContainer = () => {
+    const { addProduct } = useContext(CartContext)
     const { id } = useParams()
     const [product, setProduct] = useState(null)
+    const [showSuccessModal, setShowSuccessModal] = useState(false)
 
     useEffect(() => {
         const fetchProduct = async () => {
@@ -31,10 +37,32 @@ const ItemDetailsContainer = () => {
         fetchProduct()
     }, [id])
 
+    const helperAdd = (quantity) => {
+        const { id: productId, title, price, categoryId } = product
+
+        const productCart = {
+            productId,
+            title,
+            price,
+            categoryId,
+            quantity,
+        }
+
+        addProduct(productCart)
+        setShowSuccessModal(true)
+        setTimeout(() => {
+            setShowSuccessModal(false)
+        }, 3000)
+    }
+
+    const handleCloseModal = () => {
+        setShowSuccessModal(false)
+    }
+
     return (
-        <Container className='d-flex flex-column align-items-center'>
+        <Container className='d-flex flex-column align-items-center' style={{ marginBottom: '10rem' }}>
             {product && (
-                <Card style={{ width: '30rem', marginTop: '2rem' }}>
+                <Card style={{ width: '30rem', marginTop: '2rem', marginBottom: '10rem' }}>
                     <Card.Img variant='top' src={product.image} alt={product.title} />
                     <Card.Body>
                         <Card.Title>{product.title}</Card.Title>
@@ -46,7 +74,10 @@ const ItemDetailsContainer = () => {
                         <ListGroup.Item>Stock: {product.stock}</ListGroup.Item>
                     </ListGroup>
                     <Card.Body>
-                        <Card.Link><ItemCount productStock={product.stock} addToCart={product}/></Card.Link>
+                        <Card.Link>
+                            <ItemCount productStock={product.stock} addToCart={helperAdd} />
+                            <SuccessModal show={showSuccessModal} handleClose={handleCloseModal} />
+                        </Card.Link>
                     </Card.Body>
                 </Card>
             )}
@@ -54,4 +85,22 @@ const ItemDetailsContainer = () => {
     )
 }
 
-export default ItemDetailsContainer
+const SuccessModal = ({ show, handleClose }) => {
+    return (
+        <Modal show={show} onHide={handleClose}>
+            <Modal.Header closeButton>
+                <Modal.Title>Success!</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+                <p>Added to cart successfully!</p>
+            </Modal.Body>
+            <Modal.Footer>
+                <Button variant='secondary' onClick={handleClose}>
+                    Close
+                </Button>
+            </Modal.Footer>
+        </Modal>
+    )
+}
+
+export default ItemDetailContainer
