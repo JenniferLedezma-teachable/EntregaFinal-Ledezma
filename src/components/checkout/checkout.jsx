@@ -11,7 +11,8 @@ import { CartContext } from '../../context/cartContext'
 const Checkout = () => {
   const [orderId, setOrderId] = useState('')
   const { cart, emptyCart, finalPrice, cartLength } = useContext(CartContext)
-  const { register, handleSubmit, formState: { errors }} = useForm()
+  const { register, handleSubmit, watch, formState: { errors }} = useForm()
+  const email = watch('email', '')
 
   const showForm = cartLength() > 0
   const showThankYouPage = orderId && !showForm
@@ -105,31 +106,30 @@ const Checkout = () => {
                   {...register('email')}
                   required
                 />
+                {errors.email && <p>{errors.email.message}</p>}
               </Card.Text>
+              <Card.Text>
+                <input
+                     type='confirmEmail'
+                     className='form-control'
+                     placeholder="Confirm your email"
+                     style={{
+                        borderColor: errors.confirmEmail ? 'red' : 'initial',
+                      }}
+                    {...register('confirmEmail', {
+                    validate: (value) => value === email || 'The emails do not match'
+                    })}
+                    
+                    required
+                />
+                 {errors.confirmEmail && <p>{errors.confirmEmail.message}</p>}
+              </Card.Text>    
               <Card.Text>
                 <input
                   type='phone'
                   className='form-control'
                   placeholder='Phone Number'
                   {...register('phone')}
-                  required
-                />
-              </Card.Text>
-              <Card.Text>
-                <input
-                  type='cardNumber'
-                  className='form-control'
-                  placeholder="Enter your 16-digit card number"
-                  style={{
-                    borderColor: errors.cardNumber ? 'red' : 'initial',
-                  }}
-                  {...register('cardNumber', {
-                    required: 'Card number is required',
-                    pattern: {
-                      value: /^[0-9]{16}$/,
-                      message: 'Please enter a valid 16-digit card number',
-                    },
-                  })}
                   required
                 />
               </Card.Text>
@@ -145,6 +145,7 @@ const Checkout = () => {
                 borderColor: '#D4A3A7',
                 margin: '2rem',
               }}
+              disabled={!email || Object.keys(errors).length > 0}
             >
               Send my Order
             </button>

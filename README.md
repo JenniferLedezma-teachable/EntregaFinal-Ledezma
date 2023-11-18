@@ -3,7 +3,12 @@ This Ecommerce, is based on Skincare Products and it is named SKin Glow CR.
 
 ## Technologies Used
 React JS and Vite powered
-Firebase to store all the products and imagenes of everyone
+Firebase to store all the products and imagenes of every product
+The project includes:
+  - `react-hook-form` via `npm` to have support with form validations
+  - `react-bootstrap` and `react-icons` to add icons like cart
+  - ``
+
 
 ## Setup
 
