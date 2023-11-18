@@ -64,6 +64,13 @@ const CartComponentContext = ({ children }) => {
     }
   }
 
+  const finalPrice = () => {
+    return cart.reduce((total, { product, quantity }) => {
+      const productPrice = product.price * quantity
+      return total + productPrice
+    }, 0)
+  }
+
   return (
     <CartContext.Provider
       value={{
@@ -74,6 +81,7 @@ const CartComponentContext = ({ children }) => {
         emptyCart,
         cartLength,
         addProduct,
+        finalPrice
       }}
     >
       {children}

@@ -8,7 +8,7 @@ import Col from 'react-bootstrap/Col'
 import { CartContext } from '../../context/cartContext'
 
 const Cart = () => {
-  const { cart, emptyCart } = useContext(CartContext)
+  const { cart, emptyCart, finalPrice } = useContext(CartContext)
   const [showModal, setShowModal] = useState(false)
 
   const handleEmptyCart = () => {
@@ -26,33 +26,39 @@ const Cart = () => {
       style={{ marginTop: '2rem' }}
     >
       { cart.length > 0 ? (
-        <Row style={{ marginTop: '2rem' }}>
-          <Col xs='auto'>
-            <Link to='/products' className='btn btn-primary d-flex flex-column align-items-center' style={{ backgroundColor: '#E7C5CA', borderColor: '#D4A3A7' }}>
-              Continue Buying
-            </Link>
-          </Col>
-          <Col xs='auto'>
-            <Button
-              className='btn btn-primary d-flex flex-column align-items-center'
-              style={{ backgroundColor: '#E7C5CA', borderColor: '#D4A3A7' }}
-              onClick={handleEmptyCart}
-            >
-              Empty Cart
-            </Button>
-          </Col>
-          <Col xs='auto'>
-            <Link to='/checkout' className='btn btn-primary d-flex flex-column align-items-center' style={{ backgroundColor: '#E7C5CA', borderColor: '#D4A3A7' }}>
-              Checkout
-            </Link>
-          </Col>
-        </Row>
+        <Container>
+           <Row style={{ marginTop: '2rem' }}>
+            <h2>Final Price: ${finalPrice()}</h2>
+          </Row>
+          
+          <Row style={{ marginTop: '2rem' }}>
+            <Col xs='auto'>
+              <Link to='/products' className='btn btn-primary d-flex flex-column align-items-center' style={{ backgroundColor: '#E7C5CA', borderColor: '#D4A3A7' }}>
+                Continue Buying
+              </Link>
+            </Col>
+            <Col xs='auto'>
+              <Button
+                className='btn btn-primary d-flex flex-column align-items-center'
+                style={{ backgroundColor: '#E7C5CA', borderColor: '#D4A3A7' }}
+                onClick={handleEmptyCart}
+              >
+                Empty Cart
+              </Button>
+            </Col>
+            <Col xs='auto'>
+              <Link to='/checkout' className='btn btn-primary d-flex flex-column align-items-center' style={{ backgroundColor: '#E7C5CA', borderColor: '#D4A3A7' }}>
+                Checkout
+              </Link>
+            </Col>
+          </Row>
+        </Container>
        
       ) : (
         <Row style={{ marginTop: '2rem' }}>
            <h2>The cart is empty</h2>
           <Col xs='auto'>
-            <Link to='/products' className='btn btn-primary d-flex flex-column align-items-center' style={{ backgroundColor: '#E7C5CA', borderColor: '#D4A3A7' }}>
+            <Link to='/' className='btn btn-primary d-flex flex-column align-items-center' style={{ backgroundColor: '#E7C5CA', borderColor: '#D4A3A7' }}>
               The cart is empty, Go to Home
             </Link>
           </Col>
