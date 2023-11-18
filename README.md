@@ -1,4 +1,4 @@
-# SKin Glow CR
+# Skin Glow CR
 This Ecommerce, is based on Skincare Products and it is named SKin Glow CR.
 
 ## Technologies Used
