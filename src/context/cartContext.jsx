@@ -39,6 +39,10 @@ const CartComponentContext = ({ children }) => {
     setCart([])
   }
 
+  const cartLength = () => {
+    return cart.length
+  }
+
   const addProduct = (productCart) => {
     try {
       const { productId, quantity } = productCart
@@ -63,11 +67,12 @@ const CartComponentContext = ({ children }) => {
   return (
     <CartContext.Provider
       value={{
+        cart,
         number,
         setNumber,
-        cart,
-        emptyCart,
         sum,
+        emptyCart,
+        cartLength,
         addProduct,
       }}
     >
