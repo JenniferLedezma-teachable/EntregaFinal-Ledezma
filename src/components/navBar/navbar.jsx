@@ -1,21 +1,21 @@
 import CartWidget from '../cartWidget/cartWidget'
 import { Navbar, Container, Nav, NavDropdown } from 'react-bootstrap'
-import { NavLink } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 const NavBar = () => {
   return (
     <Navbar collapseOnSelect expand='lg' className='bg-body-tertiary'>
       <Container>
-        <Navbar.Brand><NavLink to='/'> Skin Glow CR </NavLink></Navbar.Brand>
+        <Navbar.Brand as={Link}><Link to='/'> Skin Glow CR </Link></Navbar.Brand>
         <Navbar.Toggle aria-controls='responsive-navbar-nav' />
         <Navbar.Collapse id='responsive-navbar-nav'>
           <Nav className='me-auto'>
-            <Nav.Link><NavLink to='products'>All Products</NavLink></Nav.Link>
+            <Nav.Link as={Link} to='products'>All Products</Nav.Link>
             <NavDropdown title='Categories' id='collapsible-nav-dropdown'>
-              <NavDropdown.Item><NavLink to='category/serum'>Serums</NavLink></NavDropdown.Item>
-              <NavDropdown.Item><NavLink to='category/sunscreen'>Sunscreens</NavLink></NavDropdown.Item>
-              <NavDropdown.Item><NavLink to='category/hair'>Hair</NavLink></NavDropdown.Item>
-              <NavDropdown.Item><NavLink to='category/makeup'>Makeup</NavLink></NavDropdown.Item>
+              <NavDropdown.Item as={Link} to='category/serum'>Serums</NavDropdown.Item>
+              <NavDropdown.Item as={Link} to='category/sunscreen'>Sunscreens</NavDropdown.Item>
+              <NavDropdown.Item as={Link} to='category/hair'>Hair</NavDropdown.Item>
+              <NavDropdown.Item as={Link} to='category/makeup'>Makeup</NavDropdown.Item>
             </NavDropdown>
           </Nav>
           <Nav>

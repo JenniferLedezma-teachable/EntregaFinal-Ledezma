@@ -1,5 +1,5 @@
 // ItemDetailsContainer.jsx
-import { useState, useEffect, useContext } from 'react'
+import { useState, useEffect, useContext} from 'react'
 import Container from 'react-bootstrap/Container'
 import Card from 'react-bootstrap/Card'
 import ListGroup from 'react-bootstrap/ListGroup'
@@ -38,7 +38,7 @@ const ItemDetailContainer = () => {
         fetchProduct()
     }, [id])
 
-    const helperAdd = (quantity) => {
+    const handleAdd = (quantity) => {
         const { id: productId, title, price, categoryId } = product
 
         const productCart = {
@@ -79,7 +79,7 @@ const ItemDetailContainer = () => {
                     </ListGroup>
                     <Card.Body>
                         <Card.Link>
-                            <ItemCount productStock={product.stock} addToCart={helperAdd} />
+                            <ItemCount productStock={product.stock} addToCart={handleAdd} />
                             <SuccessModal show={showSuccessModal} handleClose={handleCloseModal} />
                         </Card.Link>
                     </Card.Body>

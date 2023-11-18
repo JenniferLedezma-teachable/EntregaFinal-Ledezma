@@ -3,6 +3,7 @@ import ItemListContainer from './components/itemListContainer/itemListContainer'
 import ItemDetailContainer from './components/itemDetailContainer/itemDetailContainer'
 import Home from './components/home/home'
 import NotFound from './components/notFound/notFound'
+import Cart from './components/cart/cart'
 
 import { Routes, Route, BrowserRouter } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -18,6 +19,7 @@ function App() {
               <Route exact path='/' element={<Home />} />
               <Route exact path='products' element={<ItemListContainer />} />
               <Route exact path='/category/:categoryId' element={<ItemListContainer />} />
+              <Route exact path="/cart" element={<Cart />}></Route>
               <Route path='/item/:id' element={<ItemDetailContainer />} />
             </Routes>
           </BrowserRouter>
